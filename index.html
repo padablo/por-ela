@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>POR VOCÊ</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap');
+
+        body {
+            background-color: black;
+            font-family: 'Roboto', Arial, sans-serif;
+            text-align: center;
+            padding: 30px 0;
+            color: #b2dfdb;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: 'Bodoni MT', cursive;
+            color: #FF0000;
+            font-size: 4em;
+            text-shadow: 1px 1px 3px #f8cdda;
+            margin-bottom: 30px;
+        }
+
+        .carrossel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            width: 100vw;
+        }
+
+        .carrossel img {
+            scroll-snap-align: center;
+            width: 100vw;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 0 8px #b52e6f88);
+        }
+
+        .carrossel img:hover {
+            transform: scale(1.02);
+        }
+
+        .carrossel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 3s ease, transform 3s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.4em;
+            }
+        }
+        .mensagem {
+        font-family: 'Copperplate Gothic', cursive;
+        font-size: 2em;
+        color: #ffffff;
+        text-shadow: 1px 1px 3px #fff;
+        margin: 40px auto;
+        max-width: 90%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Música de fundo -->
+    <audio id="bgMusic" autoplay loop muted>
+        <source src="musica_1.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <h1 class="fade-in-up">Feliz dia dos namorados 🤍</h1>
+
+    <div class="carrossel fade-in-up">
+        <img src="foto_1.jpg" alt="foto 1" />
+        <img src="foto_2.jpg" alt="foto 2" />
+        <img src="foto_3.jpg" alt="foto 3" />
+        <img src="foto_4.jpg" alt="foto 4" />
+        <img src="foto_5.jpg" alt="foto 5" />
+        <img src="foto_6.jpg" alt="foto 6" />
+        <img src="foto_7.jpg" alt="foto 7" />
+        <img src="foto_8.jpg" alt="foto 8" />
+    </div>
+
+    <h1 class="fade-in-up ">Eu te amo demais 🤍</h1>
+    <h1 class="fade-in-up mensagem">Cantares de Salomão 4:10: "Minha amada é como uma flor, a mais linda da minha vida" meu amor você é a flor mais belas do campo seu brilho traspassa tranquilidade e paz sempre vou te amar 🤍</h1>
+
+    <script>
+        const music = document.getElementById('bgMusic');
+        document.body.addEventListener('click', () => {
+            music.muted = false;
+            music.play();
+        }, { once: true });
+
+        function fadeInOnScroll() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            const windowBottom = window.innerHeight + window.scrollY;
+
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top + window.scrollY;
+                if (windowBottom > elementTop + 50) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+
+</body>
+</html>
